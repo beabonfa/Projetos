@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Economica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .card {
+            background: rgb(250, 250, 250);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+            margin: 0 auto;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Meta economica</h2>
+
+        <input type="number" id="meta" placeholder="Qual sua meta? (Ex.: 100)">
+        <input type="number" id="guardado" placeholder="Quanto você já guardou? (Ex.: 50)">
+
+        <button onclick="verificarMeta()">Verificar</button>
+
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        // esta função roda quando você clica no botão
+        function  verificarMeta() {
+            // 1. Pegamos os valores que você digitou nas caixas inputs
+            let valorMeta = parseFloat(document.getElementById('meta').value);
+            let valorGuardado = parseFloat(document.getElementById('guardado').value);
+
+            // 2. Pegamos o paragrfo onde vamos exibir o resultados
+            let paragrafoResultado = document.getElementById('resultado');
+
+            // 3. Uma logica simples de "SE"  (if) e senão (else)
+            if (valorGuardado >= valorMeta) {
+                paragrafoResultado.innerText = "Parabéns! Você atingiu sua meta!";
+                paragrafoResultado.style.color = "green";
+            } else {
+                let falta = valorMeta - valorGuardado;
+                paragrafoResultado.innerText = "Quase lá! Faltam R$" + falta + " para atingir sua meta.";
+                paragrafoResultado.style.color = "orange";
+            }
+        }
+    </script>
+</body>
+</html>
